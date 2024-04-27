@@ -23,8 +23,9 @@ export default function Search({ foodData, setFoodData }) {
     fetchFood();
   }, [query]);
   return (
-    <div>
+    <div className="bg-gray-800 my-5 mx-auto w-[300px] relative">
       <input
+        className="bg-gray-600 text-base rounded-md text-slate-400 py-2.5 px-5 w-full outline-none"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         type="text"

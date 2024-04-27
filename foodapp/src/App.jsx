@@ -1,21 +1,17 @@
 import { useState } from "react";
 import Search from "./components/Search";
 import FoodList from "./components/FoodList";
+import Nav from "./components/Nav";
+import "./index.css";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
-  if (foodData.length == 0) {
-    setFoodData([1]);
-    //console.log("asdas");
-  }
+
   return (
-    <div className="App">
+    <div className="App bg-gray-800">
+      <Nav />
       <Search foodData={foodData} setFoodData={setFoodData} />
       <FoodList foodData={foodData} setFoodData={setFoodData} />
-      {/* {foodData.title} */}
-      {/* {foodData.map((food) => (
-        <h1>{food.title}</h1>
-      ))} */}
     </div>
   );
 }
