@@ -17,33 +17,43 @@ export default function FoodDetails({ foodID }) {
     fetchFood();
   }, [foodID]);
   return (
-    <div className="text-slate-400">
+    <div className="text-slate-400 w-[600px] my-5 mx-auto px-5 py-5 rounded-lg shadow-md shadow-slate-500">
       <div>
-        <h1>{food.title}</h1>
-        <img src={food.image} />
-        <div>
+        <h1 className="text-2xl mb-2.5 font-bold">{food.title}</h1>
+        <img className="max-w-full h-auto mb-2.5 rounded-lg" src={food.image} />
+        <div className="mb-5 flex justify-between items-center">
           <span>
             <strong>⌚️{food.readyInMinutes} Minutes</strong>
           </span>
           <span>
             <strong>🧑‍🧑‍🧒 Serves: {food.servings}</strong>
           </span>
-          <span>{food.vegetarian ? "🥕 Vegetarian" : "🥩 Non-Vegetarian"}</span>
-          <span>{food.vegan ? "🐮 Vegan" : ""}</span>
+          <span>
+            <strong>
+              {food.vegetarian ? "🥕 Vegetarian" : "🥩 Non-Vegetarian"}
+            </strong>
+          </span>
+          <span>
+            <strong>{food.vegan ? "🐮 Vegan" : ""}</strong>
+          </span>
         </div>
         <div>
-          <span>${food.pricePerServing / 100} Per Serving</span>
+          <span>
+            <strong>${food.pricePerServing / 100} Per Serving</strong>
+          </span>
         </div>
-      </div>
-      <div>
-        <h2>Instructions</h2>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          food.analyzedInstructions[0].steps.map((steps) => (
-            <li>{steps.step}</li>
-          ))
-        )}
+        <h2 className="text-2xl font-bold mt-5">Instructions</h2>
+        <div className="p-5 rounded-md ">
+          <ol className="ml-0 ">
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              food.analyzedInstructions[0].steps.map((steps) => (
+                <li className="my-2.5 mx-0 list-decimal">{steps.step}</li>
+              ))
+            )}
+          </ol>
+        </div>
       </div>
     </div>
   );
